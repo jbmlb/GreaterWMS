@@ -9,7 +9,7 @@ ENV port = ${port}
 #Installation foundation dependency
 #RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list
 #RUN apt-get clean
-RUN apt-get update --fix-missing && apt-get upgrade -y
+RUN apt-get update && apt-get upgrade -y
 RUN apt-get install build-essential -y
 RUN apt-get install supervisor -y
 #Configure pip3 Alibaba Source
