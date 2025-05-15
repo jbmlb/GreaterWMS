@@ -1,3 +1,5 @@
+import environ
+from dotenv import load_dotenv
 from pathlib import Path
 import os
 
@@ -11,7 +13,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 from django.core.management.utils import get_random_secret_key
 SECRET_KEY = get_random_secret_key()
-
+load_dotenv()
+env = environ.Env()
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -102,11 +105,13 @@ CSRF_COOKIE_SAMESITE = None
 # update
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-        'OPTIONS': {
-            'timeout': 20,
-        }
+        'ENGINE': 'psqlextra.backend',
+        'NAME': env('POSTGRES_NAME', default='greater_wms'),
+        'USER': env('POSTGRES_USER', default='postgres'),
+        'PASSWORD': env('POSTGRES_PASSWORD', default='postgres'),
+        'HOST': env('POSTGRES_HOST', default='127.0.0.1'),
+        'PORT': env('POSTGRES_PORT', default=5432),
+        'CONN_MAX_AGE': 150,
     }
 }
 
