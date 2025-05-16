@@ -7,7 +7,8 @@ COPY ./backend_start.sh /GreaterWMS/backend_start.sh
 WORKDIR /GreaterWMS
 ENV port = ${port}
 #Installation foundation dependency
-RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list
+RUN sed -i 's/^deb http:/deb https:/g' /etc/apt/sources.list
+RUN sed -i 's/^deb-src http:/deb-src https:/g' /etc/apt/sources.list
 #RUN apt-get clean
 RUN apt-get update && apt-get install build-essential -y
 RUN apt-get install supervisor -y
