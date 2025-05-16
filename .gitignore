@@ -12,3 +12,4 @@ bfg.jar
 error.log
 server.log
 docker-compose-server.yml
+docker-compose.yml
