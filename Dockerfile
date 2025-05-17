@@ -35,7 +35,7 @@ RUN cd  /GreaterWMS/templates
 #RUN npm config set registry https://registry.npm.taobao.org
 RUN npm install -g yarn --force
 #RUN yarn config set registry https://registry.npm.taobao.org
-RUN npm install -g @quasar/cli --force
+#RUN npm install -g @quasar/cli --force
 RUN yarn install
 RUN chmod +x /GreaterWMS/templates/web_start.sh
 ENTRYPOINT ["/GreaterWMS/templates/web_start.sh"]
