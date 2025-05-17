@@ -24,7 +24,7 @@ RUN pip3 install daphne
 RUN chmod +x /GreaterWMS/backend_start.sh
 CMD ["/GreaterWMS/backend_start.sh"]
 
-FROM --platform=linux/amd64 node:14.21.3-bullseye-slim AS front
+FROM --platform=linux/amd64 node:14.19.3-buster-slim AS front
 COPY ./templates/package.json /GreaterWMS/templates/package.json
 #COPY ./templates/node_modules/ /GreaterWMS/templates/node_modules/
 COPY ./web_start.sh /GreaterWMS/templates/web_start.sh
@@ -33,7 +33,7 @@ ENV port = ${port}
 RUN cd  /GreaterWMS/templates
 #RUN npm install -g npm --force
 #RUN npm config set registry https://registry.npm.taobao.org
-RUN npm install -g yarn
+RUN npm install -g yarn --force
 #RUN yarn config set registry https://registry.npm.taobao.org
 RUN npm install -g @quasar/cli --force
 RUN yarn install
