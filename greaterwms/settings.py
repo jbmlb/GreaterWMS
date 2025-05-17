@@ -11,15 +11,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-from django.core.management.utils import get_random_secret_key
-SECRET_KEY = get_random_secret_key()
 load_dotenv()
 env = environ.Env()
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ['*']
-
+SECRET_KEY = env('SECRET_KEY', default='g=obdlbqe5^e%+mfg%tyn_y2my)b@-xb4lql%%&@8&0pn9x^bn')
+DEBUG = env.bool('DEBUG', default=False)
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['*'])
+CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS', default=['https://backend.yuhaoge.com'])
 
 # Application definition
 
